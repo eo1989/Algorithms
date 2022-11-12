@@ -8,20 +8,16 @@ def merge(a,b):
         else:
             c.append(b[0])
             b.remove(b[0])
-    if len(a) == 0:
-        c += b
-    else:
-        c += a
+    c += b if len(a) == 0 else a
     return c
 
 # Code for merge sort
 
 def mergesort(x):
     """ Function to sort an array using merge sort algorithm """
-    if len(x) == 0 or len(x) == 1:
+    if len(x) in {0, 1}:
         return x
-    else:
-        middle = len(x)/2
-        a = mergesort(x[:middle])
-        b = mergesort(x[middle:])
-        return merge(a,b)
+    middle = len(x)/2
+    a = mergesort(x[:middle])
+    b = mergesort(x[middle:])
+    return merge(a,b)

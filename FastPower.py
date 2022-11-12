@@ -23,12 +23,8 @@ def FastPower(a,b):
         count +=2
         c = a*a
         ans = FastPower(c,b/2)
-    if b%2 == 1:
-        count +=1
-        return a*ans
-    else:
-        count +=1
-        return ans
+    count +=1
+    return a*ans if b%2 == 1 else ans
 count = 0
 print FastPower(2,9), count
 

@@ -20,24 +20,20 @@ def countSplitInversions(a,b):
         else:
             c.append(b[0])
             b.remove(b[0])
-            splitInversions += len(a)            
+            splitInversions += len(a)
     total += splitInversions
-    if len(a) == 0:
-        c += b
-    else:
-        c += a
+    c += b if len(a) == 0 else a
     return c, total
 
 def inversions(x):
     """ Function to calculate the number of split inversions between two sorted arrays. """
     global total
-    if len(x) == 0 or len(x) == 1:
+    if len(x) in {0, 1}:
         return x, 0
-    else:
-        middle = len(x)/2
-        a = inversions(x[:middle])[0]
-        b = inversions(x[middle:])[0]
-        return countSplitInversions(a,b)
+    middle = len(x)/2
+    a = inversions(x[:middle])[0]
+    b = inversions(x[middle:])[0]
+    return countSplitInversions(a,b)
 
 # call function and output number of inversions
 print inversions(numList)[1]
